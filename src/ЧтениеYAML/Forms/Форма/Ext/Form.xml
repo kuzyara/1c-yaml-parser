@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
 	<ScalingMode>Compact</ScalingMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа1" id="23">
 			<Behavior>Usual</Behavior>
@@ -15,17 +18,38 @@
 					<ContextMenu name="ИсходныйТекстКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ИсходныйТекстРасширеннаяПодсказка" id="3"/>
 				</TextDocumentField>
-				<Button name="Преобразовать" id="25">
-					<Type>UsualButton</Type>
-					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+				<UsualGroup name="Группа2" id="29">
 					<GroupVerticalAlign>Center</GroupVerticalAlign>
-					<CommandName>Form.Command.Преобразовать</CommandName>
-					<ExtendedTooltip name="ПреобразоватьРасширеннаяПодсказка" id="26"/>
-				</Button>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="30"/>
+					<ChildItems>
+						<Button name="ПреобразоватьТекстВСоотв" id="25">
+							<Type>UsualButton</Type>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<CommandName>Form.Command.ПреобразоватьТекстВСоотв</CommandName>
+							<ExtendedTooltip name="ПреобразоватьТекстВСоотвРасширеннаяПодсказка" id="26"/>
+						</Button>
+						<Button name="ПреобразоватьСоотвВТекст" id="27">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ПреобразоватьСоотвВТекст</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;-</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ПреобразоватьСоотвВТекстРасширеннаяПодсказка" id="28"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 				<Table name="Результат" id="4">
 					<Representation>Tree</Representation>
 					<TitleLocation>Top</TitleLocation>
 					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
 					<Header>false</Header>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<EnableStartDrag>true</EnableStartDrag>
@@ -67,12 +91,14 @@
 					<ChildItems>
 						<InputField name="РезультатКлюч" id="17">
 							<DataPath>РезультатДерево.Ключ</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="РезультатКлючКонтекстноеМеню" id="18"/>
 							<ExtendedTooltip name="РезультатКлючРасширеннаяПодсказка" id="19"/>
 						</InputField>
 						<InputField name="РезультатЗначение" id="20">
 							<DataPath>РезультатДерево.Значение</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="РезультатЗначениеКонтекстноеМеню" id="21"/>
 							<ExtendedTooltip name="РезультатЗначениеРасширеннаяПодсказка" id="22"/>
@@ -85,7 +111,7 @@
 	<Attributes>
 		<Attribute name="Объект" id="1">
 			<Type>
-				<v8:Type>cfg:ExternalDataProcessorObject.ЧтениеYAML</v8:Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ЧтениеЗаписьYML</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 		</Attribute>
@@ -147,9 +173,18 @@
 				</Column>
 			</Columns>
 		</Attribute>
+		<Attribute name="РезультатСоответствие" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат соответствие</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="Преобразовать" id="1">
+		<Command name="ПреобразоватьТекстВСоотв" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -159,10 +194,25 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Преобразовать</v8:content>
+					<v8:content>Преобразовать текст в соотв</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Преобразовать</Action>
+		</Command>
+		<Command name="ПреобразоватьСоотвВТекст" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Преобразовать соотв в текст</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Преобразовать соотв в текст</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПреобразоватьСоотвВТекст</Action>
 		</Command>
 	</Commands>
 </Form>
