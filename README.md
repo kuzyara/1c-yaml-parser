@@ -8,6 +8,8 @@
 
 __[Скачать](https://github.com/kuzyara/1c-yaml-parser/releases/latest/download/YAML.epf)__
 
+Выражаю благодарность [AllexAllex](https://github.com/AllexAllex) за посильную помощь в [исправлении ошибок](https://github.com/kuzyara/1c-yaml-parser/pull/2) парсера
+
 ![alt text](2024-08-07_13-21-42.png)
 
 Статья на инфостарте https://infostart.ru/1c/tools/2053702/
